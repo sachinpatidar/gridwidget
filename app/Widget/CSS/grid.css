@@ -1,0 +1,82 @@
+﻿.table-worksheet td {
+    border: solid #818285 1px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+}
+
+    .table-worksheet td.status {
+        text-align: left;
+        color: white;
+        font-weight: bold;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        padding-left: 4px;
+    }
+
+.table th {
+    padding: 1px;
+    text-align: center;
+}
+
+.table-worksheet .table-head .table-part-scrollable th {
+    font-size: 11px;
+}
+
+
+.status {
+    border-width: 2.5px;
+}
+
+    .status:hover {
+        -webkit-box-shadow: 0px 7px 18px 4px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 7px 18px 4px rgba(0,0,0,0.75);
+        box-shadow: 0px 7px 18px 4px rgba(0,0,0,0.75);
+        z-index:999;
+        position:relative;
+    }
+
+    .status.R0 {
+        background-color: #0366dd !important;
+        -webkit-box-shadow: 0px 7px 18px 4pxrgba(1,1,1,0.75);
+        -moz-box-shadow: 0px 7px 18px 4px rgba(1,1,1,0.75);
+        box-shadow: 0px 7px 18px 4px rgba(1,1,1,0.75);
+        z-index:999;
+        position:relative;
+    }
+    .status.R1 {
+        background-color: #0366dd !important;
+    }
+
+    .status.R2 {
+        background-color: #ed1c24 !important;
+    }
+
+    .status.R3 {
+        background-color: #72A2D3 !important;
+    }
+
+    .status.R4 {
+        background-color: #B5B5B5 !important;
+    }
+
+    .status.R5 {
+        background-color: #DDDDDD !important;
+    }
+
+    .status.R6 {
+        background-color: #FFFFFF !important;
+    }
+
+.accordion-status.no-circle {
+    float: right;
+    background-color: inherit;
+}
+
+.table-worksheet .table-part-sticky {
+    width: 300px;
+}
+
+.table-worksheet .table-part-scrollable {
+    padding-left: 300px;
+}

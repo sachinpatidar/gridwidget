@@ -1,0 +1,202 @@
+﻿<main class="main">
+    <header class="main-head" *ngIf="loader">
+        <div class="shell shell-wide">
+            <h1 class="main-title">Grid</h1>
+        </div>
+    </header>
+
+    <div class="table table-worksheet table-scroll-x-y">
+        <div *ngIf="!loader" style="position:absolute; top:30%;left:50%"><img height="40" width="40" src="app/Widget/CSS/images/loading-small.gif"/></div>
+        <div class="table-head">
+            <div class="table-part-sticky"  >
+               
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+                    <colgroup>
+                        <col  *ngFor="let val of features" width="60">
+
+                       
+                    </colgroup>
+
+                    <thead>
+                        <tr class="table-head-row-secondary table-row-align-bottom">
+                         
+                                <th width="60"  *ngFor="let val of features;"  (click)="orderByFunc(val.display)" ><em *ngIf="val.show">{{val.display}}</em>  <span class="accordion-status no-circle"></span></th>
+                
+</tr>
+                    </thead>
+                </table>
+            </div>
+
+            <div class="table-part-scrollable table-part-scroll-x">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="35" *ngFor="let day of calender.Header">
+
+
+                    </colgroup>
+
+                    <thead>
+
+                        <tr class="table-head-row-secondary table-row-align-bottom">
+                            <th width="35" *ngFor="let d of calender.Header;let i=index;" [class]="getClass(i)==true?'table-head-gray':'table-head-row-secondary'">{{d.day}}<br />{{d.month}}/{{d.monthday}}</th>
+
+
+                        </tr>
+
+                    </thead>
+                </table>
+            </div><!-- /.table-part-scrollable -->
+        </div><!-- /.table-head -->
+       
+        <div class="table-body">
+            <div class="table-part-sticky">
+                <div class="table-part-inner table-part-scroll-y">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" [contextMenu]="toggleMenu"  [contextMenuSubject]="1111">
+                        <colgroup>
+                            <col *ngFor="let d of features" width="60"  height="10">
+                           
+                        </colgroup>
+
+                        <tbody>
+                           
+                            <tr *ngFor="let c of featuresValue | orderBy: [orderByValue]">
+                               
+                                    <td class="text-align-left" width="60" height="10" *ngFor="let d of features">
+                                        <span>{{c[d.display]}}</span>
+
+                                    </td>
+                              
+                                <!--<td class="text-align-left" width="80"  height="10">{{d.len}}</td>
+        <td class="text-align-left table-bordered-right" width="80"  height="10">{{d.etc}}</td>-->
+                            </tr>
+                          
+
+
+                        </tbody>
+                    </table>
+                    <context-menu #toggleMenu (close)="processContextMenuCloseEvent()">
+                        <template contextMenuItem *ngFor="let c of featuresMenu" (execute)="toggleFeatures(c.display,c.show,c.order,c.id)">
+                         <p ><input type="checkbox" [(ngModel)]="c.show" /><label>{{c.display}}</label></p>
+                            
+                        </template>
+
+                    </context-menu>
+                </div>
+            </div>
+
+            <div class="table-part-scrollable">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="35"  height="10" *ngFor="let day of calender.Rows">
+
+
+                    </colgroup>
+
+                    <!--<tbody>
+                        <tr *ngFor="let d of calender.Data; let j=index" id="tr_{{j}}" >
+                           
+                            <td width="35" height="10" style="padding:0px !important;" *ngFor="let day of d.row; let i=index" (click)="modalOpen(day,d,i,j)" id="div2_{{j}}_{{i}}" (dragover)="dropable($event)" (drop)="dothedrop($event,j,i,day)" >
+                                <div id="div_{{j}}_{{i}}" #val (mouseout)="removeClass()" (mouseover)="over($event,i,j)" [tooltip]="myTooltip" class="status" (mousedown)="onResize($event,$event.currentTarget.style.width)" (mouseup)="onResizeUp($event,$event.currentTarget.style.width,day,val.id,j,i)"  draggable="true" *ngIf="day.colspen!=1" (dragstart)="drag($event,j,i,day)"  [contextMenu]="basicMenu"  [contextMenuSubject]="setContextMenuItem(day,i,j)"   [ngStyle]="{'width': day.width,'height':'100%','background':day.col,'position':'relative','resize':'horizontal','overflow':'auto','top':'0px','left':'0px'}" (click)="modalOpen(day,'divFunc',i,j)">{{day.ResidentName}}  </div>
+                                
+                            </td>
+
+
+                        </tr>
+
+
+
+
+                    </tbody>-->
+                    <tbody>
+                        <tr *ngFor="let d of featuresValue; let j=index" id="tr_{{j}}">
+
+                            <td width="35" height="10" style="padding:0px !important;" *ngFor="let day of d.reservation.row; let i=index" (click)="modalOpen(day,d,i,d.index)" id="div2_{{j}}_{{i}}" (dragover)="dropable($event)" (drop)="dothedrop($event,d.index,i,day)">
+                                <div id="div_{{j}}_{{i}}" #val (mouseout)="removeClass()" (mouseover)="over($event,i,d.index)" [tooltip]="myTooltip" class="status" (mousedown)="onResize($event,$event.currentTarget.style.width)" (mouseup)="onResizeUp($event,$event.currentTarget.style.width,day,val.id,d.index,i)" draggable="true" *ngIf="day.colspen!=1" (dragstart)="drag($event,d.index,i,day)" [contextMenu]="basicMenu" [contextMenuSubject]="setContextMenuItem(day,i,d.index)" [ngStyle]="{'width': day.width,'height':'100%','background':day.col,'position':'relative','resize':'horizontal','overflow':'auto','top':'0px','left':'0px'}" (click)="modalOpen(day,'divFunc',i,d.index)">{{day.ResidentName}}  </div>
+
+                            </td>
+
+
+                        </tr>
+
+
+
+
+                    </tbody>
+                </table>
+                <context-menu #basicMenu>
+                    <template contextMenuItem (execute)="modalOpen('contextmenu',$event.item.day,$event.item.i,$event.item.j)">
+                        Edit
+                    </template>
+
+                </context-menu>
+            </div>
+        </div>
+    </div>
+    <tooltip-content #myTooltip [animation]="true" placement="left">
+        <p >Resident Name: {{Resevation.ResidentName}}</p>
+        <p >From date:{{Resevation.From | date}} </p>
+        <p >To date: {{Resevation.To | date}} </p>
+
+    </tooltip-content>
+   
+    <input type="button" id="mod" data-toggle="modal" data-target="#myModal1" hidden />
+    <input type="button" id="mod1" data-toggle="modal" data-target="#myModal" hidden />
+    </main>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog" style="top:150px; left:300px; ">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="padding:5px !important;">{{header}} Reservation</h4>
+                </div>
+                <div class="modal-body">
+
+
+
+                    <div class="modal-input" *ngIf="show"><label>Resident Name:</label><input type="text" [(ngModel)]='Resevation.ResidentName'  /></div>
+            <div class="modal-input" *ngIf="show"><label>From date:</label><input type="date" min="{{minResDate}}" max="{{maxResDate}}" [(ngModel)]='Resevation.From' disabled /></div>
+                    <!--<p *ngIf="show">From date: </p> <datepicker-ionic *ngIf="show" singleSelect setValue="2016-11-25"  class="success" [expanded]="true"></datepicker-ionic>
+           <p *ngIf="show">To date: </p> <datepicker-ionic *ngIf="show" singleSelect  class="success" value="2016-11-25" [expanded]="true"></datepicker-ionic>-->
+                    <div class="modal-input" *ngIf="show"><label>To date:</label><input type="date" min="{{minResDate}}" max="{{maxResDate}}" [(ngModel)]='Resevation.To' /></div>
+                    <div class="modal-input" *ngIf="!show"><label>Resident Name:</label><input type="text" [(ngModel)]='Resevation.ResidentName' [disabled]="checkbox"/></div>
+                  <div class="modal-input" *ngIf="!show"><label>From date:</label><input type="date" min="{{minResDate}}" max="{{maxResDate}}" [(ngModel)]='Resevation.From' [disabled]="checkbox"/></div>
+                   <!-- <p *ngIf="!show">From date: </p> <datepicker-ionic *ngIf="!show" singleSelect  value="2016-11-25" class="success" [expanded]="true"></datepicker-ionic>-->
+                <!--    <p *ngIf="!show">To date: </p> <datepicker-ionic *ngIf="!show" singleSelect  value="2016-11-25" class="success" [expanded]="true"></datepicker-ionic>-->
+                    <div class="modal-input" *ngIf="!show"><label *ngIf="!checkbox">To date:</label><label *ngIf="checkbox">Split From:</label><input type="date" min="{{minResDate}}" max="{{maxResDate}}" [(ngModel)]='Resevation.To' /></div>
+                   <div *ngIf="!show"><label *ngIf="!checkbox">check For Split reservation </label><label *ngIf="checkbox">Uncheck For Edit reservation</label><input type="checkbox" [(ngModel)]="checkbox"/></div>
+                </div>
+                <div class="modal-footer" style="padding-left:10px !important;text-align:left">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" *ngIf="showAdd" (click)="addReservation(Resevation.ResidentName,Resevation.From,Resevation.To)">Add</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" *ngIf="!show && !checkbox" (click)="updateReservation(Resevation.ResidentName,Resevation.From,Resevation.To)">Edit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" *ngIf="!show && checkbox" (click)="SplitReservation(Resevation.ResidentName,Resevation.From,Resevation.To)">Split</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="myModal1" role="dialog" style="top:150px; left:300px; ">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="padding:5px !important;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="padding:5px !important;"> Modal Header</h4>
+                </div>
+                <div class="modal-body" style="padding:5px !important;">
+                    {{error}}
+                </div>
+                <div class="modal-footer" style="padding-left:10px !important;text-align:left">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div *ngIf="loader">
+        ManageAmerica Confidential & Proprietary Material and Information
+    </div>

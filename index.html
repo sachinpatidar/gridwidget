@@ -1,0 +1,60 @@
+﻿<html>
+<head>
+    <title>Angular QuickStart</title>
+    <meta charset="UTF-8">
+   
+    <link href="/app/Widget/css/grid.css" rel="stylesheet" />
+
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="systemjs.config.js"></script>
+   
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all">
+    <link href="/app/Widget/CSS/style.css" rel="stylesheet" />
+
+    <!-- Vendor JS -->
+    <script src="/app/Widget/jquery/jquery-1.11.3.min.js"></script>
+<script src="app/Widget/JS/DragDropTouch.js"></script>
+  <!--  <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- App JS -->
+    <script src="/app/Widget/JS/functions.js"></script>
+
+
+    <script>
+
+        setTimeout(function () {
+            $('.table-scroll-x-y .table-body .table-part-scrollable').on('scroll', function () {
+                var $tablePartScrollable = $(this);
+                var $table = $(this).closest('.table-scroll-x-y');
+                var $tablePartScrollX = $table.find('.table-part-scroll-x');
+                var $tablePartScrollY = $table.find('.table-part-scroll-y');
+
+                $tablePartScrollX.css('margin-left', '-' + $tablePartScrollable.scrollLeft() + 'px');
+                $('.form-filter-inner').css('margin-left', '-' + $tablePartScrollable.scrollLeft() + 'px');
+                $tablePartScrollY.css('margin-top', '-' + $tablePartScrollable.scrollTop() + 'px');
+            });
+
+
+
+        }, 5000)
+
+
+
+
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
+
+</head>
+<!-- 3. Display the application -->
+<body>
+   
+   <my-app >Looding ....</my-app>
+</body>
+</html>
