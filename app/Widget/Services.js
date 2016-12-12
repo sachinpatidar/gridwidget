@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-var Observable_1 = require('rxjs/Observable');
-require('rxjs/Rx');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var Observable_1 = require("rxjs/Observable");
+require("rxjs/Rx");
 var CalendarService = (function () {
     function CalendarService(http) {
         this.http = http;
@@ -80,11 +80,11 @@ var CalendarService = (function () {
     CalendarService.prototype.calendarSharedData = function (Data) {
         this.list1Event.emit(Data);
     };
-    CalendarService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], CalendarService);
     return CalendarService;
 }());
+CalendarService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], CalendarService);
 exports.CalendarService = CalendarService;
 //# sourceMappingURL=Services.js.map

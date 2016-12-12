@@ -8,13 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var Services_1 = require('./Services');
-var angular2_contextmenu_1 = require('angular2-contextmenu');
+var core_1 = require("@angular/core");
+var Services_1 = require("./Services");
+var angular2_contextmenu_1 = require("angular2-contextmenu");
 ;
-var angular2_contextmenu_2 = require('angular2-contextmenu');
-var core_2 = require('@angular/core');
-var OrderBy = (function () {
+var angular2_contextmenu_2 = require("angular2-contextmenu");
+var core_2 = require("@angular/core");
+var OrderBy = OrderBy_1 = (function () {
     //@Output() userUpdated1 = new EventEmitter();
     function OrderBy(obj) {
         this.obj = obj;
@@ -53,8 +53,8 @@ var OrderBy = (function () {
                     : propertyToCheck;
                 return input.sort(function (a, b) {
                     return !desc
-                        ? OrderBy._orderByComparator(a[property], b[property])
-                        : -OrderBy._orderByComparator(a[property], b[property]);
+                        ? OrderBy_1._orderByComparator(a[property], b[property])
+                        : -OrderBy_1._orderByComparator(a[property], b[property]);
                 });
             }
         }
@@ -67,8 +67,8 @@ var OrderBy = (function () {
                         ? config[i].substr(1)
                         : config[i];
                     var comparison = !desc
-                        ? OrderBy._orderByComparator(a[property], b[property])
-                        : -OrderBy._orderByComparator(a[property], b[property]);
+                        ? OrderBy_1._orderByComparator(a[property], b[property])
+                        : -OrderBy_1._orderByComparator(a[property], b[property]);
                     //Don't return 0 yet in case of needing to sort by next property
                     if (comparison != 0)
                         return comparison;
@@ -77,12 +77,12 @@ var OrderBy = (function () {
             });
         }
     };
-    OrderBy = __decorate([
-        core_2.Pipe({ name: 'orderBy', pure: true }), 
-        __metadata('design:paramtypes', [Services_1.CalendarService])
-    ], OrderBy);
     return OrderBy;
 }());
+OrderBy = OrderBy_1 = __decorate([
+    core_2.Pipe({ name: 'orderBy', pure: true }),
+    __metadata("design:paramtypes", [Services_1.CalendarService])
+], OrderBy);
 exports.OrderBy = OrderBy;
 var WidgetComponent = (function () {
     function WidgetComponent(obj, contextMenuService) {
@@ -269,7 +269,7 @@ var WidgetComponent = (function () {
                 };
                 var skip = -1;
                 rows = [];
-                var _loop_1 = function(i) {
+                var _loop_1 = function (i) {
                     // let date = new Date();
                     var color = '';
                     var colspen = 1;
@@ -605,43 +605,44 @@ var WidgetComponent = (function () {
     WidgetComponent.prototype.orderByFunc = function (val) {
         this.orderByValue = val;
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], WidgetComponent.prototype, "PropertyID", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], WidgetComponent.prototype, "userUpdated", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], WidgetComponent.prototype, "splitedReservation", void 0);
-    __decorate([
-        core_1.ViewChild('basicMenu'), 
-        __metadata('design:type', angular2_contextmenu_1.ContextMenuComponent)
-    ], WidgetComponent.prototype, "basicMenu", void 0);
-    __decorate([
-        core_1.ViewChild('enableAndVisible'), 
-        __metadata('design:type', angular2_contextmenu_1.ContextMenuComponent)
-    ], WidgetComponent.prototype, "enableAndVisible", void 0);
-    __decorate([
-        core_1.ViewChild('withFunctions'), 
-        __metadata('design:type', angular2_contextmenu_1.ContextMenuComponent)
-    ], WidgetComponent.prototype, "withFunctions", void 0);
-    WidgetComponent = __decorate([
-        core_1.Component({
-            selector: 'calendar-widget',
-            templateUrl: 'app/Widget/CalendarUI.html',
-            styleUrls: [],
-            providers: [Services_1.CalendarService],
-        }), 
-        __metadata('design:paramtypes', [Services_1.CalendarService, angular2_contextmenu_2.ContextMenuService])
-    ], WidgetComponent);
     return WidgetComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], WidgetComponent.prototype, "PropertyID", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], WidgetComponent.prototype, "userUpdated", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], WidgetComponent.prototype, "splitedReservation", void 0);
+__decorate([
+    core_1.ViewChild('basicMenu'),
+    __metadata("design:type", angular2_contextmenu_1.ContextMenuComponent)
+], WidgetComponent.prototype, "basicMenu", void 0);
+__decorate([
+    core_1.ViewChild('enableAndVisible'),
+    __metadata("design:type", angular2_contextmenu_1.ContextMenuComponent)
+], WidgetComponent.prototype, "enableAndVisible", void 0);
+__decorate([
+    core_1.ViewChild('withFunctions'),
+    __metadata("design:type", angular2_contextmenu_1.ContextMenuComponent)
+], WidgetComponent.prototype, "withFunctions", void 0);
+WidgetComponent = __decorate([
+    core_1.Component({
+        selector: 'calendar-widget',
+        templateUrl: 'app/Widget/CalendarUI.html',
+        styleUrls: [],
+        providers: [Services_1.CalendarService],
+    }),
+    __metadata("design:paramtypes", [Services_1.CalendarService, angular2_contextmenu_2.ContextMenuService])
+], WidgetComponent);
 exports.WidgetComponent = WidgetComponent;
 //Enum for WeekDays
+var DayOfWeek;
 (function (DayOfWeek) {
     DayOfWeek[DayOfWeek["Mon"] = 1] = "Mon";
     DayOfWeek[DayOfWeek["Tue"] = 2] = "Tue";
@@ -650,8 +651,8 @@ exports.WidgetComponent = WidgetComponent;
     DayOfWeek[DayOfWeek["Fri"] = 5] = "Fri";
     DayOfWeek[DayOfWeek["Sat"] = 6] = "Sat";
     DayOfWeek[DayOfWeek["Sun"] = 0] = "Sun";
-})(exports.DayOfWeek || (exports.DayOfWeek = {}));
-var DayOfWeek = exports.DayOfWeek;
+})(DayOfWeek = exports.DayOfWeek || (exports.DayOfWeek = {}));
+var monthOfYear;
 (function (monthOfYear) {
     monthOfYear[monthOfYear["Jan"] = 0] = "Jan";
     monthOfYear[monthOfYear["Feb"] = 1] = "Feb";
@@ -665,6 +666,6 @@ var DayOfWeek = exports.DayOfWeek;
     monthOfYear[monthOfYear["Oct"] = 9] = "Oct";
     monthOfYear[monthOfYear["Nov"] = 10] = "Nov";
     monthOfYear[monthOfYear["Dec"] = 11] = "Dec";
-})(exports.monthOfYear || (exports.monthOfYear = {}));
-var monthOfYear = exports.monthOfYear;
+})(monthOfYear = exports.monthOfYear || (exports.monthOfYear = {}));
+var OrderBy_1;
 //# sourceMappingURL=Widget.component.js.map

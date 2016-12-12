@@ -14,8 +14,8 @@ export class CalendarService {
     headers.append('Accept', 'application/json');
     headers.append("Authorization", tok);
       var url=this.API_URL+'reservation/grid/configuration/'+propertyId+'?companyId='+companyId;
-    return this.http.get(url,{headers:headers})
-    .catch(this.handleError);
+      return this.http.get(url, { headers: headers });
+   
   }
 SignIn(UserName:string,Password):Observable<any>{
 
@@ -27,8 +27,8 @@ SignIn(UserName:string,Password):Observable<any>{
  headers.append('Content-Type', 'application/json');
    headers.append('Accept', 'application/json');
 //   headers.append('Access-Control-Request-Method', 'POST');
-    return this.http.post(url,body,{headers:headers})
-                     .catch(this.handleError);
+   return this.http.post(url, body, { headers: headers });
+                    
 }
 getFilterCriterea(propertyId:number,Token:string,companyId:number):Observable<any> {
  var url=this.API_URL+'reservation/grid/criteria/'+propertyId+'?companyId='+companyId;
@@ -37,9 +37,9 @@ getFilterCriterea(propertyId:number,Token:string,companyId:number):Observable<an
  headers.append("Authorization", tok);
  headers.append('Content-Type', 'application/json');
    headers.append('Accept', 'application/json');
-return this.http.get(url,{headers:headers})
+    return this.http.get(url, { headers: headers });
                    
-                    .catch(this.handleError);
+                 
 
 }
     getReservarions(propertyId: number, Token: string, companyId: number): Observable<any> {
@@ -49,10 +49,9 @@ return this.http.get(url,{headers:headers})
  headers.append("Authorization", tok);
  headers.append('Content-Type', 'application/json');
    headers.append('Accept', 'application/json');
-return this.http.get(url,{headers:headers})
+        return this.http.get(url, { headers: headers });
                    
-                    .catch(this.handleError);
-
+                   
 }
 
   private extractData(res: Response) {

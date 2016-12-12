@@ -8,18 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var ModelPopup = (function () {
     function ModelPopup() {
     }
-    ModelPopup = __decorate([
-        core_1.Component({
-            selector: 'Model-Popup',
-            template: "\n  <h1>dharmender</h1>\n  "
-        }), 
-        __metadata('design:paramtypes', [])
-    ], ModelPopup);
     return ModelPopup;
 }());
+ModelPopup = __decorate([
+    core_1.Component({
+        selector: 'Model-Popup',
+        template: "\n  <h1>dharmender</h1>\n  "
+    }),
+    __metadata("design:paramtypes", [])
+], ModelPopup);
 exports.ModelPopup = ModelPopup;
 //# sourceMappingURL=ModelPopup.component.js.map
